@@ -55,10 +55,10 @@ class User extends Authenticatable
     {
         return $this->roles()->where('id', 3)->exists();
     }
-    public function servicePersonServiceAssigns()
-    {
-        return $this->hasMany(ServiceAssign::class, 'service_person_id', 'id');
-    }
+    // public function servicePersonServiceAssigns()
+    // {
+    //     return $this->hasMany(ServiceAssign::class, 'service_person_id', 'id');
+    // }
 
     public function getEmailVerifiedAtAttribute($value)
     {
