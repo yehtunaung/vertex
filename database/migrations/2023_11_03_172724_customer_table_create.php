@@ -33,13 +33,13 @@ class CustomerTableCreate extends Migration
      */
     public function down()
     {
-        Schema::table('your_table', function (Blueprint $table) {
+        Schema::table('customers', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email', 191)->nullable(); 
             $table->string('NRC');
             $table->string('phone_no');
-            $table->tinyInteger('radio')->default(0)->nullable();
+            $table->tinyInteger('gender')->default(0)->nullable();
             $table->string('address')->nullable();
             $table->timestamps();
             $table->softDeletes();
