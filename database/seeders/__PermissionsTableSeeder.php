@@ -102,26 +102,7 @@ class PermissionsTableSeeder extends Seeder
                 'id'    => 23,
                 'title' => 'item_access',
             ],
-            [
-                'id' => 24,
-                'title' => 'facality_type_access'
-            ],
-            [
-                'id' => 24,
-                'title' => 'facality_type_create'
-            ],
-            [
-                'id' => 24,
-                'title' => 'facality_type_edit'
-            ],
-            [
-                'id' => 24,
-                'title' => 'facality_type_show'
-            ],
-            [
-                'id' => 24,
-                'title' => 'facality_type_delete'
-            ]
+            
         ];
 
         Permission::insert($permissions);

@@ -13,7 +13,7 @@
                         <div class="row justify-content-start">
                             <div class="col-sm-10 col-lg-8">
                                 <h5 class="text-warning text-uppercase mb-3 animated slideInDown">TOP HOTEL IN THE CITY</h5>
-                                <h1 class="display-3 text-white animated slideInDown">The Best Online Learning Platform</h1>
+                                <h1 class="display-3 text-white animated slideInDown">The Best Online Booking Platform</h1>
                                 <p class="fs-5 text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet
                                     sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea sanctus eirmod
                                     elitr.</p>
@@ -32,8 +32,8 @@
                     <div class="container">
                         <div class="row justify-content-start">
                             <div class="col-sm-10 col-lg-8">
-                                <h5 class="text-warning text-uppercase mb-3 animated slideInDown">Best Online Courses</h5>
-                                <h1 class="display-3 text-white animated slideInDown">Get Educated Online From Your Home
+                                <h5 class="text-warning text-uppercase mb-3 animated slideInDown">Best Online Hotel Booking</h5>
+                                <h1 class="display-3 text-white animated slideInDown">Get Booking Online From Your Home
                                 </h1>
                                 <p class="fs-5 text-white mb-4 pb-2">Vero elitr justo clita lorem. Ipsum dolor at sed stet
                                     sit diam no. Kasd rebum ipsum et diam justo clita et kasd rebum sea sanctus eirmod
