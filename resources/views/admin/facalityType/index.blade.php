@@ -154,7 +154,7 @@
             
             $.ajax({
                 type: "PUT",
-                url: "/admin/facality-type-update",
+                url: `/admin/facality-type-update/${id}`,
                 data: {
                     _token: "{{ csrf_token() }}",
                     facality_type: facality_type,
@@ -176,7 +176,7 @@
             
             $.ajax({
                 type: "GET",
-                url: "/admin/facality-type/update",
+                url: `/admin/facality-type/update/${id}`,
                 data: {
                     _token: "{{ csrf_token() }}",
                     facality_type: facality_type,
