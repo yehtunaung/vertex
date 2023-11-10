@@ -34,6 +34,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('audit-logs', 'AuditLogsController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
 
 
+    // Facality Type 
+    Route::resource('facality-type', FacalityTypeController::class);
+    Route::put('facality-type-update','FacalityTypeController@update');
 
     Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
 

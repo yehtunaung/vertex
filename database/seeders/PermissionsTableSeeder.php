@@ -107,19 +107,19 @@ class PermissionsTableSeeder extends Seeder
                 'title' => 'facality_type_access'
             ],
             [
-                'id' => 24,
+                'id' => 25,
                 'title' => 'facality_type_create'
             ],
             [
-                'id' => 24,
+                'id' => 26,
                 'title' => 'facality_type_edit'
             ],
             [
-                'id' => 24,
+                'id' => 27,
                 'title' => 'facality_type_show'
             ],
             [
-                'id' => 24,
+                'id' => 28,
                 'title' => 'facality_type_delete'
             ]
         ];

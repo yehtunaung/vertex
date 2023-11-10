@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Gate;
 use App\Models\FacalityType;
-
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreFacalityTypeRequest;
+use App\Models\Facality;
 
 class FacalityTypeController extends Controller
 {
@@ -14,15 +17,18 @@ class FacalityTypeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    private $faclity_type;
-    public function __construct(FacalityType $faclity_type)
+    private $facalityType;
+    public function __construct(FacalityType $facality_type)
     {
-        $this->faclity_type = $faclity_type;
+        $this->facalityType = $facality_type;
     }
 
     public function index()
     {
         abort_if(Gate::denies('facality_type_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $facalityTypes = $this->facalityType->paginate(10);
+
+        return view('admin.facalityType.index',compact('facalityTypes'));
     }
 
     /**
@@ -32,7 +38,8 @@ class FacalityTypeController extends Controller
      */
     public function create()
     {
-        //
+        abort_if(Gate::denies('facality_type_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        return view('admin.facalityType.create');
     }
 
     /**
@@ -41,9 +48,14 @@ class FacalityTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreFacalityTypeRequest $request)
     {
-        //
+        dd($request->all());
+        $facalityType = $this->facalityType;
+        $facalityType->facality_type =  $request->input('facality_type');
+        $facalityType->save();
+        
+        return redirect()->route('admin.facality-type.index')->with('success', 'FacalityType created successfully');;
     }
 
     /**
@@ -77,7 +89,10 @@ class FacalityTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        dd($request->all());
+        $facalityType = $this->facalityType;
+        $facalityType->find($id);
+
     }
 
     /**

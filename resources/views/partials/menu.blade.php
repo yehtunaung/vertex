@@ -83,6 +83,16 @@
             </li>
         @endcan
 
+        @can('facality_type_access')
+            <li
+                class="menu-item  {{ request()->is('admin/facality-type') || request()->is('admin/facality-type/*') ? 'active' : '' }}">
+                <a href="{{ route('admin.facality-type.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons  bx bx-cookie"></i>
+                    <div> Facality Type</div>
+                </a>
+            </li>
+        @endcan
+
 
         {{-- profile password --}}
         @if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
