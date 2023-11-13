@@ -26,7 +26,7 @@ class FacalityTypeController extends Controller
     public function index()
     {
         abort_if(Gate::denies('facality_type_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
-        $facalityTypes = $this->facalityType->paginate(10);
+        $facalityTypes = $this->facalityType->paginate(100);
 
         return view('admin.facalityType.index',compact('facalityTypes'));
     }
@@ -50,7 +50,6 @@ class FacalityTypeController extends Controller
      */
     public function store(StoreFacalityTypeRequest $request)
     {
-        dd($request->all());
         $facalityType = $this->facalityType;
         $facalityType->facality_type =  $request->input('facality_type');
         $facalityType->save();
@@ -89,7 +88,7 @@ class FacalityTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request->all());
+        return("Hello World");
         $facalityType = $this->facalityType;
         $facalityType->find($id);
 
