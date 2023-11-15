@@ -55,18 +55,13 @@
                                 @endcan
                                 @can('user_delete')
                                         <form id="orderDelete-{{ $facalityType->id }}"
-                                            action="{{ route('admin.users.destroy', $facalityType->id) }}" method="POST"
-                                            onsubmit="return confirm('{{ trans('global.areYouSure') }}');"
-                                            style="display: inline-block;">
+                                            action="{{ route('admin.facality-type.destroy', $facalityType->id) }}" method="POST"  style="display: inline-block;">
                                             <input type="hidden" name="_method" value="DELETE">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                            <input type="hidden"
-                                                style="width: 26px;height: 36px;display: inline-block;line-height: 36px;"
-                                                class=" p-0 glow" value="{{ trans('global.delete') }}">
                                             <button
                                                 style="width: 26px;height: 36px;display: inline-block;line-height: 36px;border:none;color:grey;background:none;"
                                                 class=" p-0 glow" title="delete"
-                                                onclick="event.preventDefault(); document.getElementById('orderDelete-{{ $facalityType->id }}').submit();">
+                                                onclick="return confirm('Are you sure?')">
                                                 <i class="bx bx-trash text-danger"></i>
                                             </button>
                                         </form>
@@ -83,8 +78,6 @@
             </div>
         </div>
     </div>
-
-<!-- Button trigger modal -->
 
   
     <!--Create Modal -->
@@ -153,8 +146,8 @@
             let facality_type = $('#facality_type').val();
             
             $.ajax({
-                type: "PUT",
-                url: `/admin/facality-type-update/${id}`,
+                type: "POST",
+                url: `/admin/facality-type/save`,
                 data: {
                     _token: "{{ csrf_token() }}",
                     facality_type: facality_type,
@@ -175,7 +168,7 @@
             let facality_type = $('#ed_facality_type').val();
             
             $.ajax({
-                type: "GET",
+                type: "POST",
                 url: `/admin/facality-type/update/${id}`,
                 data: {
                     _token: "{{ csrf_token() }}",

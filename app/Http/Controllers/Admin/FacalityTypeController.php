@@ -54,7 +54,7 @@ class FacalityTypeController extends Controller
         $facalityType->facality_type =  $request->input('facality_type');
         $facalityType->save();
         
-        return redirect()->route('admin.facality-type.index')->with('success', 'FacalityType created successfully');;
+        return redirect()->route('admin.facality-type.index')->with('success', 'FacalityType created successfully');
     }
 
     /**
@@ -102,6 +102,9 @@ class FacalityTypeController extends Controller
      */
     public function destroy($id)
     {
-        //
+        abort_if(Gate::denies('facality_type_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $facality_type = $this->facalityType::find($id);
+        $facality_type->delete();
+        return redirect()->route('admin.facality-type.index')->with('success', 'FacalityType delete successfully');
     }
 }

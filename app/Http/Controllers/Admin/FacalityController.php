@@ -1,10 +1,14 @@
 <?php
+namespace App\Http\Controllers\Admin;
 
-namespace App\Http\Controllers;
-
+use App\Http\Controllers\Controller;
+use Gate;
+use App\Models\FacalityType;
+use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Http\Request;
+use App\Models\Facality;
 
-class FacalitieController extends Controller
+class FacalityController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +17,8 @@ class FacalitieController extends Controller
      */
     public function index()
     {
-        //
+        
+        return view('admin.facality.index');
     }
 
     /**
@@ -23,7 +28,7 @@ class FacalitieController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.facality.create');
     }
 
     /**
