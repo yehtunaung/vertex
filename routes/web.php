@@ -36,9 +36,11 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
 
     // Facality Type 
     Route::resource('facality-type', FacalityTypeController::class);
-    Route::put('facality-type-update/update/{id}','FacalityTypeController@update');
 
-    Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
+    // Facality 
+    Route::resource('facality', FacalityController::class);
+
+    // Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
 
 });
 
