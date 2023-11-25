@@ -112,7 +112,7 @@
 
     {{-- Edit Modal Box  --}}
     <div class="modal fade" id="exampleModal1" tabindex="-1" aria-labelledby="exampleModalLabel1" aria-hidden="true">
-        <form action="" method="POST">
+        <form action="">
             @method("PUT")
             @csrf
             <div class="modal-dialog">
@@ -169,7 +169,7 @@
             
             $.ajax({
                 type: "POST",
-                url: `/admin/facality-type/update/${id}`,
+                url: `/admin/facality-type/${id}`,
                 data: {
                     _token: "{{ csrf_token() }}",
                     facality_type: facality_type,

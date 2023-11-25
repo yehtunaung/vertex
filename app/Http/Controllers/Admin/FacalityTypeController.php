@@ -88,7 +88,6 @@ class FacalityTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        return("Hello World");
         $facalityType = $this->facalityType;
         $facalityType->find($id);
 
