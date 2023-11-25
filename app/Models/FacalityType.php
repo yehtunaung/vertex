@@ -33,4 +33,10 @@ class FacalityType extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function facalities()
+    {
+        return $this->hasMany(Facality::class);
+    }
+
 }

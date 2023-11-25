@@ -31,10 +31,11 @@
                             <label class="required" for="name">Facality Type Name</label>
                             <select class="form-select" aria-label="Default select example">
                                 <option selected disabled>Open this select facalitytype</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                              </select>
+                                @foreach ($facalityType as $value)
+                                    <option value="{{ $value->id }}">{{ $value->facality_type }}</option>
+                                @endforeach
+                            </select>
+
                             <span class="facality_type_id_error"></span>
                             @if ($errors->has('facality_type_id'))
                                 <div class="invalid-feedback">
@@ -46,8 +47,9 @@
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
                         <div class="form-group">
                             <label class="required" for="facality_name">Facality Name</label>
-                            <input class="form-control {{ $errors->has('facality_name') ? 'is-invalid' : '' }}" type="facality_name"
-                                name="facality_name" id="facality_name" value="{{ old('facality_name', '') }}" required>
+                            <input class="form-control {{ $errors->has('facality_name') ? 'is-invalid' : '' }}"
+                                type="facality_name" name="facality_name" id="facality_name"
+                                value="{{ old('facality_name', '') }}" required>
                             <span class="facality_name_error"></span>
                             @if ($errors->has('facality_name'))
                                 <div class="invalid-feedback">
@@ -58,7 +60,7 @@
                     </div>
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
                         <div class="form-group">
-                            <label class="required" for="password">{{ trans('cruds.user.fields.password') }}</label>
+                            <label class="" for="password">Icon</label>
                             <input class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" type="password"
                                 name="password" id="password">
                             <span class="password_error"></span>

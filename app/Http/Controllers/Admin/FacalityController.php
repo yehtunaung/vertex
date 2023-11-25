@@ -28,7 +28,8 @@ class FacalityController extends Controller
      */
     public function create()
     {
-        return view('admin.facality.create');
+        $facalityType = FacalityType::get();
+        return view('admin.facality.create',compact('facalityType'));
     }
 
     /**
