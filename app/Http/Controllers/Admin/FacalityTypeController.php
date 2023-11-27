@@ -53,7 +53,7 @@ class FacalityTypeController extends Controller
         $facalityType = $this->facalityType;
         $facalityType->facality_type =  $request->input('facality_type');
         $facalityType->save();
-        
+
         return redirect()->route('admin.facality-type.index')->with('success', 'FacalityType created successfully');
     }
 
@@ -88,8 +88,12 @@ class FacalityTypeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $facalityType = $this->facalityType;
-        $facalityType->find($id);
+
+        $facalityType = $this->facalityType->find($id);
+        $facalityType->update([
+            'facality_type' => $request['facality_type']
+        ]);
+        return "Successs";
 
     }
 
