@@ -31,9 +31,9 @@ class Facality extends Model
         'deleted_at',
     ];
 
-    public function faclityType()
+    public function facalityType()
     {
-        return $this->belongsTo(FacalityType::class);
+        return $this->belongsTo(FacalityType::class,'facality_type_id');
     }
     protected function serializeDate(DateTimeInterface $date)
     {

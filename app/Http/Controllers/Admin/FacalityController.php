@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreFacalityRequest;
 use Gate;
 use App\Models\FacalityType;
 use Symfony\Component\HttpFoundation\Response;
@@ -15,10 +16,18 @@ class FacalityController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    private $facalities;
+    private $facalityType;
+    public function __construct(Facality $facality,FacalityType $facalityTye)
+    {
+        $this->facalities = $facality;
+        $this->facalityType = $facalityTye;
+    }
     public function index()
     {
-        
-        return view('admin.facality.index');
+        abort_if(Gate::denies('facality_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $facalities = $this->facalities->with('facalityType')->get();
+        return view('admin.facality.index',compact('facalities'));
     }
 
     /**
@@ -28,7 +37,7 @@ class FacalityController extends Controller
      */
     public function create()
     {
-        $facalityType = FacalityType::get();
+        $facalityType = $this->facalityType->get();
         return view('admin.facality.create',compact('facalityType'));
     }
 
@@ -38,9 +47,11 @@ class FacalityController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreFacalityRequest $request)
     {
-        //
+        $facality = $request->all();
+        $this->facalities->create($facality);
+        return redirect()->route('admin.facality.index');
     }
 
     /**
