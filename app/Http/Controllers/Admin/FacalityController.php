@@ -3,6 +3,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreFacalityRequest;
+use App\Http\Requests\UpdateFacalityRequest;
 use Gate;
 use App\Models\FacalityType;
 use Symfony\Component\HttpFoundation\Response;
@@ -37,6 +38,7 @@ class FacalityController extends Controller
      */
     public function create()
     {
+        abort_if(Gate::denies('facality_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $facalityType = $this->facalityType->get();
         return view('admin.facality.create',compact('facalityType'));
     }
@@ -49,6 +51,7 @@ class FacalityController extends Controller
      */
     public function store(StoreFacalityRequest $request)
     {
+        abort_if(Gate::denies('facality_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
         $facality = $request->all();
         $this->facalities->create($facality);
         return redirect()->route('admin.facality.index');
@@ -73,8 +76,12 @@ class FacalityController extends Controller
      */
     public function edit($id)
     {
-        //
+        abort_if(Gate::denies('facality_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $facalities = $this->facalities->find($id);
+        $facalityType = $this->facalityType->get();
+        return view('admin.facality.edit',compact('facalities','facalityType'));
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -83,9 +90,17 @@ class FacalityController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateFacalityRequest $request, $id)
     {
-        //
+        abort_if(Gate::denies('facality_update'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $facality = $this->facalities->find($id);
+        $facality->update([
+            'facality_type_id' => $request->facality_type_id,
+            'facality_name' => $request->facality_name,
+            'icon' => $request->icon
+        ]);
+        return redirect()->route('admin.facality.index');
     }
 
     /**
@@ -96,6 +111,19 @@ class FacalityController extends Controller
      */
     public function destroy($id)
     {
-        //
+        abort_if(Gate::denies('facality_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        $facality = $this->facalities->find($id);
+        $facality->delete();
+        return redirect()->route('admin.facality.index');
+    }
+    public function trash()
+    {
+        $facalities = $this->facalities->onlyTrashed()->get();
+        return view('admin.facality.trash',compact('facalities'));
+    }
+    public function restore($id)
+    {
+        $facalities = $this->facalities->withTrashed()->find($id)->restore();
+        return redirect()->route('admin.facality.trash');
     }
 }
