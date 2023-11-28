@@ -2,17 +2,13 @@
 @section('content')
     <div class="card">
         <div class="custom-header">
-            Facality List
+            Facality Trash List
+
             <div style="margin-bottom: 10px;" class="row">
                 <div class="col-lg-12">
-                    <a class="btn button btn-secondary" href="{{ route('admin.facality.trash') }}">
-                        Trash Bin
+                    <a class="btn button btn-secondary" onclick="history.back()">
+                        Back
                     </a>
-                    @can('role_create')
-                        <a class="btn button btn-success" href="{{ route('admin.facality.create') }}">
-                            Add Facality
-                        </a>
-                    @endcan
                 </div>
             </div>
 
@@ -56,20 +52,6 @@
                                     {{ $facality->icon ?? '' }}
                                 </td>
                                 <td>
-                                    @can('facality_show')
-                                        <a class="p-0 glow"
-                                            style="width: 26px;height: 36px;display: inline-block;line-height: 36px;color:grey;"
-                                            title="view">
-                                            <i class='bx bx-show text-primary'></i>
-                                        </a>
-                                    @endcan
-
-                                    @can('facality_edit')
-                                        <a class="p-0 glow edit" id="edit"
-                                            href="{{ route('admin.facality.edit', $facality->id) }}">
-                                            <i class='bx bx-edit text-success'></i>
-                                        </a>
-                                    @endcan
                                     @can('facality_delete')
                                         <form id="orderDelete-{{ $facality->id }}"
                                             action="{{ route('admin.facality.destroy', $facality->id) }}" method="POST"
@@ -78,11 +60,18 @@
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                             <button
                                                 style="width: 26px;height: 36px;display: inline-block;line-height: 36px;border:none;color:grey;background:none;"
-                                                class=" p-0 glow" title="delete" onclick="return confirm('Are you sure?')">
+                                                class=" p-0 glow" title="delete"
+                                                onclick="return confirm('Are you sure to delete?')">
                                                 <i class="bx bx-trash text-danger"></i>
                                             </button>
                                         </form>
                                     @endcan
+                                    <a
+                                        style="width: 26px;height: 36px;display: inline-block;line-height: 36px;border:none;color:grey;background:none;"
+                                        class=" p-0 glow" title="restore"
+                                        onclick="return confirm('Are you sure to restore?')" href="{{ route('admin.facality.restore',$facality->id) }}">
+                                        <i class="bx bx-reset text-success"></i>
+                                    </a>
                                 </td>
                             @empty
                                 <td colspan="5" class="text-center">Data No Record</td>
@@ -94,6 +83,9 @@
                     {{-- {{ $facalityType->links() }} --}}
                 </div>
             </div>
+        </div>
+        <div class="container text-center">
+            <p class="text-danger">The data in the trash can will be automatically deleted after 30 days !</p>
         </div>
     </div>
 @endsection
