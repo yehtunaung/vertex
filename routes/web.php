@@ -34,11 +34,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('audit-logs', 'AuditLogsController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
 
 
-    // Facality Type 
+    // Facality Type
     Route::resource('facality-type', FacalityTypeController::class);
 
-    // Facality 
+    // Facality
     Route::get('trash','FacalityController@trash')->name('facality.trash');
+    Route::delete('trashDelete/{id}','FacalityController@trashDelete')->name('facality.trashDelete');
     Route::get('restore,{id}','FacalityController@restore')->name('facality.restore');
     Route::resource('facality', FacalityController::class);
 

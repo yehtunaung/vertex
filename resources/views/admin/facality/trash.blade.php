@@ -54,7 +54,7 @@
                                 <td>
                                     @can('facality_delete')
                                         <form id="orderDelete-{{ $facality->id }}"
-                                            action="{{ route('admin.facality.destroy', $facality->id) }}" method="POST"
+                                            action="{{ route('admin.facality.trashDelete', $facality->id) }}" method="POST"
                                             style="display: inline-block;">
                                             <input type="hidden" name="_method" value="DELETE">
                                             <input type="hidden" name="_token" value="{{ csrf_token() }}">

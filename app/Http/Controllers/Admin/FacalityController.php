@@ -126,4 +126,16 @@ class FacalityController extends Controller
         $facalities = $this->facalities->withTrashed()->find($id)->restore();
         return redirect()->route('admin.facality.trash');
     }
+
+    public function trashDelete($id)
+    {
+        $facility = $this->facalities->withTrashed()->find($id);
+
+        if ($facility) {
+            $facility->forceDelete();
+                return redirect()->route('admin.facality.trash')->with("success");
+        } else {
+            return redirect()->route('admin.facality.trash')->with("Fail");
+        }
+    }
 }
