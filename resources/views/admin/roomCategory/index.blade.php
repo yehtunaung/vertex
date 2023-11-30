@@ -2,17 +2,15 @@
 @section('content')
     <div class="card">
         <div class="custom-header">
-            {{ trans("cruds.room_category.title") }}
+            {{ trans('cruds.room_category.title') }}
             @can('role_create')
-                <div style="margin-bottom: 10px;" class="row w-50">
-                    <div class="col-lg-7">
-                        <a class="btn button btn-danger float-end" href="{{ route('admin.roomCategory.trash') }}" >
-                            {{ trans("global.trash") }}
+                <div style="margin-bottom: 10px;" class="row">
+                    <div class="col-lg-12">
+                        <a class="btn button btn-secondary" href="{{ route('admin.roomCategory.trash') }}">
+                            {{ trans('global.trash') }}
                         </a>
-                    </div>
-                    <div class="col-lg-5">
-                        <a class="btn button btn-success" href="{{ route('admin.roomCategory.create') }}" >
-                            {{ trans("cruds.room_category.room_category_add") }}
+                        <a class="btn button btn-success" href="{{ route('admin.roomCategory.create') }}">
+                            {{ trans('cruds.room_category.room_category_add') }}
                         </a>
                     </div>
                 </div>
@@ -35,9 +33,9 @@
                             <th>
                                 {{ trans('cruds.room_category.fields.cost') }}
                             </th>
-                             <th>
+                            <th>
                                 {{ trans('global.actions') }}
-                             </th>
+                            </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -51,39 +49,40 @@
                                     {{ $room_category->room_type }}
                                 </td>
                                 <td>
-                                    <img src="{{ asset('storage/rooms/'.$room_category->room_img) }}" alt="room image" class="img-thumbnail img-fluid" style="width: 50px;height:50px;">
+                                    <img src="{{ asset('storage/rooms/' . $room_category->room_img) }}" alt="room image"
+                                        class="img-thumbnail img-fluid" style="width: 50px;height:50px;">
                                 </td>
                                 <td>
                                     {{ $room_category->cost ?? '' }}
                                 </td>
                                 <td>
                                     @can('room_category_show')
-                                        <a class="p-0 glow"
-                                            href="{{ route("admin.roomCategory.show",$room_category->id) }}"
+                                        <a class="p-0 glow" href="{{ route('admin.roomCategory.show', $room_category->id) }}"
                                             style="width: 26px;height: 36px;display: inline-block;line-height: 36px;color:grey;"
-                                            title="view" >
+                                            title="view">
                                             <i class='bx bx-show text-primary'></i>
                                         </a>
                                     @endcan
 
                                     @can('room_category_edit')
-                                        <a class="p-0 glow edit" href="{{ route("admin.roomCategory.edit",$room_category->id) }}" id="edit">
+                                        <a class="p-0 glow edit"
+                                            href="{{ route('admin.roomCategory.edit', $room_category->id) }}" id="edit">
                                             <i class='bx bx-edit text-success'></i>
                                         </a>
                                     @endcan
                                     @can('room_category_delete')
-                                            <form id="orderDelete-{{ $room_category->id }}"
-                                                action="{{ route('admin.roomCategory.moveToTrash', $room_category->id) }}" method="POST"  style="display: inline-block;">
-                                                <input type="hidden" name="_method" value="DELETE">
-                                                <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                                                <button
-                                                    style="width: 26px;height: 36px;display: inline-block;line-height: 36px;border:none;color:grey;background:none;"
-                                                    class=" p-0 glow" title="delete"
-                                                    onclick="return confirm('Are you sure?')">
-                                                    <i class="bx bx-trash text-danger"></i>
-                                                </button>
-                                            </form>
-                                        @endcan
+                                        <form id="orderDelete-{{ $room_category->id }}"
+                                            action="{{ route('admin.roomCategory.moveToTrash', $room_category->id) }}"
+                                            method="POST" style="display: inline-block;">
+                                            <input type="hidden" name="_method" value="DELETE">
+                                            <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                                            <button
+                                                style="width: 26px;height: 36px;display: inline-block;line-height: 36px;border:none;color:grey;background:none;"
+                                                class=" p-0 glow" title="delete" onclick="return confirm('Are you sure?')">
+                                                <i class="bx bx-trash text-danger"></i>
+                                            </button>
+                                        </form>
+                                    @endcan
                                 </td>
 
                             </tr>
@@ -96,5 +95,4 @@
             </div>
         </div>
     </div>
-
 @endsection

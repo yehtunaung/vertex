@@ -4,13 +4,11 @@
         <div class="custom-header">
             {{ trans("cruds.room.title") }}
             @can('room_create')
-                <div style="margin-bottom: 10px;" class="row w-25">
-                    <div class="col-lg-6">
-                        <a class="btn button btn-danger" href="{{ route('admin.room.trash') }}" >
+                <div style="margin-bottom: 10px;" class="row">
+                    <div class="col-lg-12">
+                        <a class="btn button btn-secondary" href="{{ route('admin.room.trash') }}" >
                             {{ trans("global.trash") }}
                         </a>
-                    </div>
-                    <div class="col-lg-6">
                         <a class="btn button btn-success" href="{{ route('admin.room.create') }}" >
                             {{ trans("cruds.room.room_add") }}
                         </a>
