@@ -68,6 +68,36 @@ return [
             'all_privilege' => 'All Privillege'
         ],
     ],
+    'room_category' => [
+        "title" => "Room Categories",
+        "title_singular" => "Room Category",
+        "room_category_add" => "Add Room Category",
+        "fields" => [
+            "no" => "NO",
+            "id" => "ID",
+            "room_type" => "Room Type",
+            "room_img" => "Room Image",
+            "capacity" => "capacity",
+            "cost" => "Cost",
+            "description" => "description",
+            "created_at" => "Created at",
+            "updated_at" => "Updated at",
+            "deleted_at" => "Deleted at"
+        ]
+    ],
+    'room' => [
+        "title" => "Rooms",
+        "title_singular" => "Room",
+        "room_add" => "Add Room",
+        "fields" => [
+            "no" => "NO",
+            "id" => "ID",
+            "room_no" => "Room No",
+            "created_at" => "Created at",
+            "updated_at" => "Updated at",
+            "deleted_at" => "Deleted at"
+        ]
+    ],
     'auditLog' => [
         'title' => 'Audit Logs',
         'title_singular' => 'Audit Log',
