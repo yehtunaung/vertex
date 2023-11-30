@@ -22,6 +22,11 @@ Route::group(['prefix' => '/', 'namespace' => 'Frontend'], function ()  {
 
     // Reservation Page
     Route::get('/reservation', 'ReservationController@index')->name('reservation');
+    Route::post('/reservation',"ReservationController@store")->name("reservation.store");
+    Route::get("/reservation/payment","ReservationController@payment")->name("reservation.payment");
+    Route::get("/reservation/payment/success","ReservationController@paySuccess")->name("reservation.paySuccess");
+    Route::get("/reservation/payment/fail","ReservationController@payFail")->name("reservation.payFail");
+
 
     // Service Page
     Route::get('/facilities', 'ServiceController@facilities')->name('facilities');
