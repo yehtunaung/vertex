@@ -103,6 +103,26 @@
             </li>
         @endcan
 
+        @can('room_category_access')
+            <li
+                class="menu-item  {{ request()->is('admin/roomCategory') || request()->is('admin/roomCategory/*') ? 'active' : '' }}">
+                <a href="{{ route('admin.roomCategory.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons  bx bx-category"></i>
+                    <div>{{ trans("cruds.room_category.title") }}</div>
+                </a>
+            </li>
+        @endcan
+
+        @can('room_category_access')
+            <li
+                class="menu-item  {{ request()->is('admin/room') || request()->is('admin/room/*') ? 'active' : '' }}">
+                <a href="{{ route('admin.room.index') }}" class="menu-link">
+                    <i class="menu-icon tf-icons  bx bx-bed"></i>
+                    <div>{{ trans("cruds.room.title")  }}</div>
+                </a>
+            </li>
+        @endcan
+
 
         {{-- profile password --}}
         @if (file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))
