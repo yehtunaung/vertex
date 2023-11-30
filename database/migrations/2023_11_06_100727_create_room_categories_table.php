@@ -18,6 +18,7 @@ class CreateRoomCategoriesTable extends Migration
             $table->string('room_type')->nullable();
             $table->string('room_img')->nullable();
             $table->longText('description')->nullable();
+            $table->integer("capacity")->nullable();
             $table->string('cost')->nullable();
             $table->timestamps();
             $table->softDeletes();

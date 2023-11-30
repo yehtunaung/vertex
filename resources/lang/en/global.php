@@ -338,5 +338,6 @@ return [
     'warrranty'                         =>"Warranty",
     "voltage"                           =>"Voltage",
     "size"                              =>"Size",
-    "qty"                               =>"Qty"
+    "qty"                               =>"Qty",
+    "restoreWarning" => "Yon can only restore data within 30 days"
 ];

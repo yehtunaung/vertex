@@ -1,5 +1,21 @@
 @extends('layouts.home')
+@section('styles')
+    <style>
+        .name_error,
+        .email_error,
+        .password_error,
+        .role_error {
+            color: red;
+            font-size: 13px;
+            font-style: italic;
+        }
 
+        .required:after {
+            content: " *";
+            color: red;
+        }
+    </style>
+@endsection
 @section('content')
     <div class="container mt-3">
         <div class="row">
@@ -11,78 +27,130 @@
     </div>
     <div class="container">
         <div class="row">
-            <form action="">
+            <form action="{{ route("reservation.store") }}" method="POST">
+                @csrf
                 <div class="row">
                     <div class="col-md-6 my-3">
                         <label for="name" class="form-label"><b>Name</b></label>
                         <input type="name" name="name" id="name" class="form-control me-3"
-                            placeholder="Please Type Your Name" required>
+                            placeholder="Please Type Your Name"
+                            {{ $errors->has('name') ? 'is-invalid' : '' }}>
+
+                        <span class="name"></span>
+                        @if ($errors->has('name'))
+                            <div class="invalid-feedback">
+                                {{ $errors->first('name') }}
+                            </div>
+                        @endif
                     </div>
                     <div class="col-md-6 my-3">
                         <label for="email" class="form-label"><b>Email</b></label>
                         <input type="email" name="email" id="email" class="form-control me-3"
-                            placeholder="Please Type example@gmail.com" required>
+                            placeholder="Please Type example@gmail.com"
+                            {{ $errors->has('name') ? 'is-invalid' : '' }}">
+
+                            <span class="email"></span>
+                            @if ($errors->has('email'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('email') }}
+                                </div>
+                            @endif
                     </div>
+
                     <div class="col-md-6 my-3">
-                        <label for="adults" class="form-label">Adults</label>
-                        <input type="number" name="adults" id="adults" class="form-control" required>
+                        <label for="phone" class="form-label"><b>Phone</b></label>
+                        <input type="text" name="phone" id="phone" class="form-control me-3"
+                            placeholder="Please Type +959........"
+                            {{ $errors->has('phone') ? 'is-invalid' : '' }}>
+
+                            <span class="phone"></span>
+                            @if ($errors->has('phone'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('phone') }}
+                                </div>
+                            @endif
                     </div>
-                    <div class="col-md-6 my-3">
-                        <label for="children" class="form-label">Children</label>
-                        <input type="number" name="children" id="children" class="form-control" required>
+
+                    <div class="col-md-6 row">
+                        <div class="col-md-6 my-3">
+                            <label for="adults" class="form-label" >Adults</label>
+                            <input type="number" name="adults" id="adults" class="form-control" min="1" max="5"
+                            {{ $errors->has('adults') ? 'is-invalid' : '' }}>
+
+                            <span class="adults"></span>
+                            @if ($errors->has('adults'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('adults') }}
+                                </div>
+                            @endif
+                        </div>
+                        <div class="col-md-6 my-3">
+                            <label for="children" class="form-label">Children</label>
+                            <input type="number" name="children" id="children" class="form-control"  min="1" max="5"
+                            {{ $errors->has('children') ? 'is-invalid' : '' }}>
+
+                            <span class="children"></span>
+                            @if ($errors->has('children'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('children') }}
+                                </div>
+                            @endif
+                        </div>
                     </div>
                     <div class="container room_add">
                         <div class="" id="row0">
                             <div class="row">
-                                <div class="col-md-6 my-3">
+                                <div class="col-md-12 my-3">
                                     <label for="room" class="form-label"><b>Room Type</b></label>
-                                    <select name="room" id="" class="form-select" required>
+                                    <select name="room" id="" class="form-select"
+                                    {{ $errors->has('room') ? 'is-invalid' : '' }}>
                                         <option value="0" selected disabled>Please Select Room Type</option>
-                                        <option value="1">Single Room</option>
-                                        <option value="2">Double Room</option>
-                                        <option value="3">Luxury Room</option>
-                                        <option value="4">Family Room</option>
+                                        <option value="Single Room">Single Room</option>
+                                        <option value="Double Room">Double Room</option>
+                                        <option value="Luxury Room">Luxury Room</option>
+                                        <option value="Family Room">Family Room</option>
                                     </select>
-                                </div>
-                                <div class="col-md-5 my-3">
-                                    <label for="room" class="form-label"><b>Room Number</b></label>
-                                    <select class="form-select select2" id="multiple-select-field-0" data-placeholder="Choose anything" multiple required>
-                                        <option value="1">204</option>
-                                        <option value="1">208</option>
-                                        <option value="1" disabled>203 <span>Stock Out</span></option>
-                                        <option value="1">204</option>
-                                        <option value="1">102</option>
-                                        <option value="1">108</option>
-                                        <option value="1">111</option>
-                                        <option value="1">07</option>
 
-                                    </select>
-                                </div>
-                                <div class="col-md-1 my-5">
-                                    <div class="d-flex">
-                                        <a class="btn px-2 me-2 addRoom" id=""><i
-                                                class="fa-solid text-primary fa-plus"></i></a>
-                                        <a class="btn  px-0 removeRoom" id="row0"><i
-                                                class="fa-solid text-danger fa-minus" id="0"></i></a>
-                                    </div>
+                                    <span class="room"></span>
+                                    @if ($errors->has('room'))
+                                        <div class="invalid-feedback">
+                                            {{ $errors->first('room') }}
+                                        </div>
+                                    @endif
                                 </div>
                             </div>
                         </div>
                     </div>
                     <div class="col-md-6 my-3">
-                        <label for="check_in" class="form-label">Check In Date && Time</label>
+                        <label for="check_in_time" class="form-label">Check In Date && Time</label>
                         <input type="text" class="form-control" placeholder="DD/MM/YYYY"
-                            id="flatpickr-range" required />
+                            id="flatpickr-range" name="check_in_time"
+                            {{ $errors->has('check_in_time') ? 'is-invalid' : '' }}/>
+
+                            <span class="check_in_time"></span>
+                            @if ($errors->has('check_in_time'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('check_in_time') }}
+                                </div>
+                            @endif
                     </div>
                     <div class="col-md-6 my-3">
-                        <label for="check_out" class="form-label">Check Out Date && Time</label>
+                        <label for="check_out_time" class="form-label">Check Out Date && Time</label>
                         <input type="text" class="form-control" placeholder="DD/MM/YYYY"
-                            id="flatpickr-2" required />
+                            id="flatpickr-2" name="check_out_time"
+                            {{ $errors->has('check_out_time') ? 'is-invalid' : '' }}/>
+
+                            <span class="check_out_time"></span>
+                            @if ($errors->has('check_out_time'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('check_out_time') }}
+                                </div>
+                            @endif
                     </div>
-                    <div class="col-md-12 my-3">
-                        <label for="exampleFormControlTextarea1" class="form-label">Example textarea</label>
-                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4"></textarea>
-                    </div>
+                    {{-- <div class="col-md-12 my-3">
+                        <label for="exampleFormControlTextarea1" class="form-label">Making Extra Note</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="4" name></textarea>
+                    </div> --}}
                     <div class="col-md-12 text-center">
                         <button class="btn btn-lg btn-warning">Book</button>
                     </div>

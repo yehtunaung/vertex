@@ -15,13 +15,10 @@ class CreateRoomsTable extends Migration
     {
         Schema::create('rooms', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->unsignedBigInteger('room_categories_id');
-            $table->foreign('room_categories_id', 'room_categories_id_fk_7531724')->references('id')->on('room_categories')->onDelete('cascade');
-            $table->integer('room_no');
-            $table->longText('description')->nullable();
-            $table->unsignedBigInteger('items_id');
-            $table->foreign('items_id', 'items_id_fk_7531724')->references('id')->on('items')->onDelete('cascade');
-            $table->integer('total_price');
+            $table->unsignedBigInteger('room_category_id');
+            $table->foreign('room_category_id', 'room_categories_id_fk_7531724')->references('id')->on('room_categories')->onDelete('cascade');
+            $table->integer('room_no')->unique();
+            $table->integer("avaliable")->default(0);
             $table->timestamps();
             $table->softDeletes();
 

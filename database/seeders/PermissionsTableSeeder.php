@@ -122,7 +122,6 @@ class PermissionsTableSeeder extends Seeder
                 'id' => 28,
                 'title' => 'facality_type_delete'
             ],
-            
             [
                 'id' => 29,
                 'title' => 'facality_access'
@@ -142,6 +141,46 @@ class PermissionsTableSeeder extends Seeder
             [
                 'id' => 33,
                 'title' => 'facality_delete'
+            ],
+            [
+                'id' => 34,
+                'title' => 'room_category_access'
+            ],
+            [
+                'id' => 35,
+                'title' => 'room_category_show'
+            ],
+            [
+                'id' => 37,
+                'title' => 'room_category_create'
+            ],
+            [
+                'id' => 38,
+                'title' => 'room_category_edit'
+            ],
+            [
+                'id' => 39,
+                'title' => 'room_category_delete'
+            ],
+            [
+                'id' => 40,
+                'title' => 'room_access'
+            ],
+            [
+                'id' => 41,
+                'title' => 'room_show'
+            ],
+            [
+                'id' => 42,
+                'title' => 'room_create'
+            ],
+            [
+                'id' => 43,
+                'title' => 'room_edit'
+            ],
+            [
+                'id' => 44,
+                'title' => 'room_delete'
             ]
         ];
 
