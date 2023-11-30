@@ -16,10 +16,8 @@ class CreateTranscationsTable extends Migration
         Schema::create('transcations', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('transcation_name');
-            $table->unsignedBigInteger('payment_id');
-            $table->foreign('payment_id', 'payment_id_fk_7531724')->references('id')->on('payment_types')->onDelete('cascade');
-            $table->unsignedBigInteger('boonking_id');
-            $table->foreign('boonking_id', 'boonking_id_fk_7531724')->references('id')->on('bookings')->onDelete('cascade');
+            $table->unsignedBigInteger('booking_id');
+            $table->foreign('booking_id', 'boonking_id_fk_7531724')->references('id')->on('bookings')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });
