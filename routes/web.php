@@ -38,6 +38,9 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('facality-type', FacalityTypeController::class);
 
     // Facality
+    Route::get('trash','FacalityController@trash')->name('facality.trash');
+    Route::delete('trashDelete/{id}','FacalityController@trashDelete')->name('facality.trashDelete');
+    Route::get('restore,{id}','FacalityController@restore')->name('facality.restore');
     Route::resource('facality', FacalityController::class);
 
     // Room Category
