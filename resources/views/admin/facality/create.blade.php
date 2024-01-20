@@ -19,17 +19,17 @@
 @section('content')
     <div class="card">
         <div class="card-header">
-            {{ trans('global.create') }} {{ trans('cruds.user.title_singular') }}
+            {{ trans('global.create') }} Facality
         </div>
 
         <div class="card-body">
-            <form method="POST" action="{{ route('admin.facality.store') }}" enctype="multipart/form-data" id="myForm">
+            <form method="POST" action="{{ route('admin.facality.store') }}"  id="myForm">
                 @csrf
                 <div class="row">
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
                         <div class="form-group">
                             <label class="required" for="name">Facality Type Name</label>
-                            <select class="form-select" aria-label="Default select example">
+                            <select class="form-select" aria-label="Default select example" name="facality_type_id">
                                 <option selected disabled>Open this select facalitytype</option>
                                 @foreach ($facalityType as $value)
                                     <option value="{{ $value->id }}">{{ $value->facality_type }}</option>
@@ -48,7 +48,7 @@
                         <div class="form-group">
                             <label class="required" for="facality_name">Facality Name</label>
                             <input class="form-control {{ $errors->has('facality_name') ? 'is-invalid' : '' }}"
-                                type="facality_name" name="facality_name" id="facality_name"
+                                type="text" name="facality_name" id="facality_name"
                                 value="{{ old('facality_name', '') }}" required>
                             <span class="facality_name_error"></span>
                             @if ($errors->has('facality_name'))
@@ -60,15 +60,8 @@
                     </div>
                     <div class="col-xl-4 col-lg-4 col-md-6 col-sm-12 col-12">
                         <div class="form-group">
-                            <label class="" for="password">Icon</label>
-                            <input class="form-control {{ $errors->has('password') ? 'is-invalid' : '' }}" type="password"
-                                name="password" id="password">
-                            <span class="password_error"></span>
-                            @if ($errors->has('password'))
-                                <div class="invalid-feedback">
-                                    {{ $errors->first('password') }}
-                                </div>
-                            @endif
+                            <label class="" for="icon">Icon</label>
+                            <input class="form-control" type="text" name="icon" id="icon">
                         </div>
                     </div>
                     <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 d-flex">

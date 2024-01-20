@@ -17,13 +17,12 @@ class CreateBookingsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email');
+            $table->string("phone");
             $table->string('adults');
             $table->string('children');
-            $table->date('date');
+            $table->dateTime('booking_time');
             $table->dateTime('check_in_time');
             $table->dateTime('check_out_time');
-            $table->string('check_in_am_pm', 2);
-            $table->string('check_out_am_pm', 2);
             $table->timestamps();
             $table->softDeletes();
         });

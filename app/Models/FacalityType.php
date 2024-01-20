@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-    
+
 
 class FacalityType extends Model
 {
@@ -36,7 +36,7 @@ class FacalityType extends Model
 
     public function facalities()
     {
-        return $this->hasMany(Facality::class);
+        return $this->hasMany(Facality::class,'facality_type_id');
     }
 
 }

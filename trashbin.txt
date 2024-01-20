@@ -1,0 +1,63 @@
+>facality_type
+
+facali
+
+faclityType()
+
+
+        // return $facality;
+
+
+        return $facality;
+
+facality
+
+
+        // $facalityType = FacalityType::get();
+
+
+        dd($request->all());
+
+
+        // return $facalityTye;
+
+
+
+
+{{ $errors->has('icon') ? 'is-invalid' : '' }}
+
+'admin.facality.store'
+
+
+                            <span class="icon_error"></span>
+                            @if ($errors->has('icon'))
+                                <div class="invalid-feedback">
+                                    {{ $errors->first('icon') }}
+                                </div>
+                            @endif
+
+required
+
+
+        //
+
+
+            //
+
+enctype="multipart/form-data"
+
+{ trans('cruds.user.title_singular') }}
+
+
+            console.log(id);
+
+
+        $data = $request->facality_type;
+
+
+        return $data;
+
+id
+
+this
+

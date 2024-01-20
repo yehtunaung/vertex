@@ -4,7 +4,7 @@ use App\Models\CustomerList;
 use App\Models\ServiceAssign;
 use Illuminate\Support\Facades\DB;
 
-Route::redirect('/admin', '/login');
+// Route::redirect('/admin', '/login');
 Route::get('/home', function () {
     if (session('status')) {
         return redirect()->route('admin.home')->with('status', session('status'));
@@ -34,11 +34,26 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('audit-logs', 'AuditLogsController', ['except' => ['create', 'store', 'edit', 'update', 'destroy']]);
 
 
-    // Facality Type 
+    // Facality Type
     Route::resource('facality-type', FacalityTypeController::class);
 
-    // Facality 
+    // Facality
+    Route::get('trash','FacalityController@trash')->name('facality.trash');
+    Route::delete('trashDelete/{id}','FacalityController@trashDelete')->name('facality.trashDelete');
+    Route::get('restore,{id}','FacalityController@restore')->name('facality.restore');
     Route::resource('facality', FacalityController::class);
+
+    // Room Category
+    Route::get("roomCategory/trash","RoomCategoryController@getTrashs")->name("roomCategory.trash");
+    Route::put("roomCategory/restore/{id}","RoomCategoryController@restoreRoomCategory")->name("roomCategory.restore");
+    Route::delete("roomCategory/moveToTrash/{id}","RoomCategoryController@moveToTrash")->name("roomCategory.moveToTrash");
+    Route::resource('roomCategory',RoomCategoryController::class);
+
+    // Room
+    Route::get("room/trash","RoomController@getTrashs")->name("room.trash");
+    Route::put("room/restore/{id}","RoomController@restoreRoom")->name("room.restore");
+    Route::delete("room/moveToTrash/{id}","RoomController@moveToTrash")->name("room.moveToTrash");
+    Route::resource("room",RoomController::class);
 
     // Route::get('global-search', 'GlobalSearchController@search')->name('globalSearch');
 

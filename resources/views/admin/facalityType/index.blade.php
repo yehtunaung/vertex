@@ -79,7 +79,7 @@
         </div>
     </div>
 
-  
+
     <!--Create Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <form action="" method="POST">
@@ -118,6 +118,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                   <div class="modal-header">
+                    <input type="hidden" name="df_id" id="df_id">
                     <h5 class="modal-title" id="exampleModalLabel">Edit Facality Type</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
@@ -144,7 +145,6 @@
     <script>
         $('#save-facality').on('click', function(e) {
             let facality_type = $('#facality_type').val();
-            
             $.ajax({
                 type: "POST",
                 url: `/admin/facality-type/save`,
@@ -162,13 +162,14 @@
             var id = $(this).data('id');
             var facality_type = $(this).data('facality-type');
             $('#ed_facality_type').val(facality_type);
+            $('#df_id').val(id);
         });
 
         $('#update-facality').on('click', function(e) {
             let facality_type = $('#ed_facality_type').val();
-            
+            let id = $('#df_id').val();
             $.ajax({
-                type: "POST",
+                type: "PUT",
                 url: `/admin/facality-type/${id}`,
                 data: {
                     _token: "{{ csrf_token() }}",

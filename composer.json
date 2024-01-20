@@ -22,6 +22,7 @@
         "laraveldaily/laravel-charts": "^0.1.24",
         "maatwebsite/excel": "^3.1",
         "nuovo/spreadsheet-reader": "^0.5.11",
+        "stripe/stripe-php": "^13.4",
         "yajra/laravel-datatables-oracle": "^9.18"
     },
     "require-dev": {
